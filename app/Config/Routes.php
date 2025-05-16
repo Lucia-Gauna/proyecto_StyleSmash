@@ -36,6 +36,10 @@ $routes->get('/tienda_view', 'Home::tienda_view');
 $routes->get('/terminos', 'Home::terminos');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
+//rutas del registro de usuario
+$routes->get('/registro', 'Home::registro');
+$routes->post('/enviar-form', 'Usuario_controller::formValidation');
+
 
 /*
  * --------------------------------------------------------------------
