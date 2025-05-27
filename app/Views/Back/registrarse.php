@@ -3,20 +3,20 @@
 <div class="container pt-5 mt-5 mb-5">
     
     <!-- Título dentro de una tarjeta (Bootstrap) -->
-    <div class="card-header text-justify">
-        <div class="row d-flex justify-content-center">
-            <div class="card col-lg-3" style="width: 50%;">
-                <h4>Registrarse</h4>
-            </div>
+    <div class="container">
+        <div class="row justify-content-center">
+             <div class="col-lg-6 text-center mt-5">
+                <h1 class="display-4">Registrarse</h1>
+             </div>
         </div>
-    </div>
+    </div
 
     <?php 
     // Accedemos al servicio de validación de CodeIgniter
     $validation = \Config\Services::validation(); 
     ?>
 
-    <!-- Formulario que se enviará por POST -->
+        <!-- Formulario que se enviará por POST -->
     <form method="post" action="<?= base_url('/enviar-form') ?>">
         
         <!-- Token de seguridad -->
@@ -40,9 +40,13 @@
         <div class="card-body justify-content-center" media="(max-width:768px)">
 
             <!-- Campo: Nombre -->
-            <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                <input name="nombre" type="text" class="form-control" placeholder="nombre">
+            <div class="container d-flex justify-content-center mt-4">
+                <div class="mb-2" style="width: 500px;">
+                     <label for="nombre" class="form-label">Nombre</label>
+                     <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre">
+                </div>
+            
+
 
                 <!-- Mostrar error si el campo "nombre" no es válido -->
                 <?php if ($validation->getError('nombre')): ?>
@@ -53,10 +57,12 @@
             </div>
 
             <!-- Campo: Apellido -->
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Apellido</label>
-                <input type="text" name="apellido" class="form-control" placeholder="apellido">
-
+           <div class="container d-flex justify-content-center mt-4">
+                <div class="mb-2" style="width: 500px;">
+                     <label for="apellido" class="form-label">Apellido</label>
+                     <input name="apellido" id="apellido" type="text" class="form-control" placeholder="apellido">
+                </div>
+            
                 <!-- Mostrar error si el campo "apellido" no es válido -->
                 <?php if ($validation->getError('apellido')): ?>
                     <div class="alert alert-danger mt-2">
