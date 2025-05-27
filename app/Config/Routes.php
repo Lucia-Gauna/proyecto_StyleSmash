@@ -37,7 +37,7 @@ $routes->get('/terminos', 'Home::terminos');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
 //rutas del registro de usuario
-$routes->get('/registro', 'Home::registro');
+$routes->get('/registro', 'Usuario_controller::registrarse');
 $routes->post('/enviar-form', 'Usuario_controller::formValidation');
 
 

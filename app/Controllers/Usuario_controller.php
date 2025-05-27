@@ -10,12 +10,12 @@ class Usuario_controller extends Controller
         helper(['form', 'url']);
     }
 
-    public function create()
+    public function registrarse()
     {
-        $dato['titulo']='Registro';
-        echo view('front/head_view', $dato);
+        $data['titulo']='Registro';
+        echo view('front/head_view', $data);
         echo view('front/nav_view');
-        echo view('back/usuario/registro');
+        echo view('Back/registrarse');
         echo view('front/footer_view');
     }
 
@@ -31,11 +31,11 @@ class Usuario_controller extends Controller
         ],
     );
       
-    $formModel = new Usuarios_model();
+    $formModel = new Usuario_model();
 
     if(!$input) {
         $data['titulo']='Registro';
-        echo view('front/head_view', $dato);
+        echo view('front/head_view', $data);
         echo view('front/nav_view');
         echo view('back/usuario/registro', ['validation' => $this->validator]);
         echo view('front/footer_view');
@@ -50,7 +50,7 @@ class Usuario_controller extends Controller
     ]);
 
         session()->setFlashdata('success', 'Usuario registrado con exito');
-        return $this->response->redirect(to_url('/registro'));
+        return redirect()->to('/registro');
 
     }
  }
