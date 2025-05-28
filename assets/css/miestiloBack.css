@@ -1,0 +1,23 @@
+
+  #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    padding: 40px 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurece un poco el fondo para mejor lectura */
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 15px;
+  }
