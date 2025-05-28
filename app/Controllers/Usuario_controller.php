@@ -27,14 +27,15 @@ class Usuario_controller extends Controller
             'apellido' => 'required|min_length[3]|max_length[25]',
             'usuario' => 'required|min_length[3]',
             'email' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.mail]',
-            'pass' => 'required|min_length[3]|max_length[10]',
+            'pass' => 'required|min_length[3]|max_length[10]'
+            'password2' => 'required|matches[pass]'
         ],
     );
       
     $formModel = new Usuario_model();
 
     if(!$input) {
-        $data['titulo']='Registro';
+        $data['titulo']='Registrarme';
         echo view('front/head_view', $data);
         echo view('front/nav_view');
         echo view('back/usuario/registro', ['validation' => $this->validator]);
