@@ -35,8 +35,8 @@
 
         foreach ($productos as $p) {
           echo '
-          <div class="col-6 col-md-3 mb-4">
-            <div class="card h-100 text-center">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+            <div class="card h-100 text-justify">
               <img src="assets/img/' . $p["imagen"] . '" class="card-img-top" alt="' . $p["nombre"] . '">
               <div class="card-body">
                 <h5 class="card-title">' . $p["nombre"] . '</h5>

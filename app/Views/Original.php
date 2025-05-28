@@ -1,30 +1,72 @@
+<style>
+    .home-section {
+      position: relative;
+      min-height: 100vh;
+      background: url('assets/img/download(1).gif') no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Degradado superior */
+    .home-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 70%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+      z-index: 1;
+    }
+
+    /* Contenido sobre el fondo */
+    .content-container {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    /* Animación de texto */
+    .animated-text {
+      opacity: 0;
+      transform: translateZ(-100%);
+      animation: slideIn 5.5s forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 400px) {
+      .animated-text {
+        font-size: 1.5rem;
+      }
+
+      .content-container p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 
 
 
-<section class="hero-section">
-  <div class="container">
-    <div class="row align-items-center">
-    <div class="col-md-6 mb-4 mb-md-0">
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner rounded shadow">
-      <div class="carousel-item active">
-        <img src="assets/img/festejotapia.jpeg" class="d-block w-100" alt="Imagen 1">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/agustapia.jpg" class="d-block w-100" alt="Imagen 2">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/tapia.png" class="d-block w-100" alt="Imagen 3">
-      </div>
+
+  <!-- SECCIÓN PRINCIPAL -->
+  <section class="home-section">
+    <div class="content-container">
+      <h1 class="animated-text display-4 fw-bold">Bienvenido a Style Smash</h1>
+      <p class="lead">El estilo se encuentra con el pádel</p>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-</div>
+  </section>
       <div class="col-md-6 text-md-start text-center">
         <h1 class="hero-title">Equipate para ganar.</h1>
       </div>

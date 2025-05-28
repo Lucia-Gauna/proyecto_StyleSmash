@@ -75,7 +75,7 @@
 
   </div>
 
-  <div class="text-center mt-5">
+  <div class="text-justify mt-5">
   <a href="<?php echo base_url('/'); ?>" class="btn btn-success btn-lg">
     Volver al Inicio
   </a>
