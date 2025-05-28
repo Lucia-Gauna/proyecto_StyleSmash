@@ -8,10 +8,8 @@
     </video>
 
         <!-- Contenido encima del video -->
-    <div class="overlay d-flex justify-content-center align-items-center">
-        <div class="card p-4 shadow-lg bg-black" style="max-width: 500px; width: 100%;">
-            <h2 class="text-center mb-3">Registrarse</h2>
-        </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <h2 class="text-center mb-3">Registrarse</h2>
     </div>
 
     <?php 
@@ -44,7 +42,7 @@
 
             <!-- Campo: Nombre -->
             <div class="container d-flex justify-content-center mt-4">
-                <div class="mb-2" style="width: 500px; margin-top: -10px">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
                      <label for="nombre" class="form-label">Nombre</label>
                      <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre">
                 </div>
@@ -61,7 +59,7 @@
 
             <!-- Campo: Apellido -->
            <div class="container d-flex justify-content-center mt-4">
-                <div class="mb-2" style="width: 500px; margin-top: -10px">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
                      <label for="apellido" class="form-label">Apellido</label>
                      <input name="apellido" id="apellido" type="text" class="form-control" placeholder="Apellido">
                 </div>
@@ -76,7 +74,7 @@
 
             <!-- Campo: Usuario -->
            <div class="container d-flex justify-content-center mt-4">
-                <div class="mb-2" style="width: 500px; margin-top: -10px">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
                      <label for="usuario" class="form-label">Usuario</label>
                      <input name="usuario" id="usuario" type="text" class="form-control" placeholder="@Usuario123">
                 </div>
@@ -91,7 +89,7 @@
 
             <!-- Campo: Correo -->
            <div class="container d-flex justify-content-center mt-4">
-                <div class="mb-2" style="width: 500px; margin-top: -10px">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
                      <label for="email" class="form-label">Correo Electrónico</label>
                      <input name="email" id="email" type="text" class="form-control" placeholder="Ejemplo@gmail.com">
                 </div>
@@ -106,21 +104,39 @@
 
              <!-- Campo: Contraseña -->
            <div class="container d-flex justify-content-center mt-4">
-                <div class="mb-2" style="width: 500px; margin-top: -10px">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
                      <label for="pass" class="form-label">Contraseña</label>
                      <input name="pass" id="pass" type="text" class="form-control" >
                 </div>
             
-                <!-- Mostrar error si el campo "Correo" no es válido -->
-                <?php if ($validation->getError('email')): ?>
+                <!-- Mostrar error si el campo "Contraseña" no es válido -->
+                <?php if ($validation->getError('pass')): ?>
                     <div class="alert alert-danger mt-2">
-                        <?= $validation->getError('email'); ?>
+                        <?= $validation->getError('pass'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Campo: Verificar contraseña -->
+           <div class="container d-flex justify-content-center mt-4">
+                <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
+                     <label for="password2" class="form-label">Verificar Contraseña</label>
+                     <input name="password2" id="pass" type="text" class="form-control" >
+                </div>
+            
+                <!-- Mostrar error si el campo "Contraseña" no es válido -->
+                <?php if ($validation->getError('password2')): ?>
+                    <div class="alert alert-danger mt-2">
+                        <?= $validation->getError('password2'); ?>
                     </div>
                 <?php endif; ?>
             </div>
 
             <!-- Botón de enviar -->
-            <button type="submit" class="btn btn-primary">Registrarse</button>
+             <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+             </div>
+            
 
         </div>
     </form>
