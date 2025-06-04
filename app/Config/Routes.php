@@ -33,12 +33,22 @@ $routes->get('/', 'Home::index');
 $routes->get('/acerca_de', 'Home::acerca_de');
 $routes->get('/contacto', 'Home::contacto');
 $routes->get('/tienda_view', 'Home::tienda_view');
+
 $routes->get('/terminos', 'Home::terminos');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
 //rutas del registro de usuario
 $routes->get('/registro', 'Usuario_controller::registrarse');
 $routes->post('/enviar-form', 'Usuario_controller::formValidation');
+
+// rutas de login
+$routes->get('/login', 'Login_controller::index');
+$routes->post('/enviarlogin', 'Login_controller::auth');
+$routes->get('/logout', 'Login_controller::logout');
+
+$routes->get('/', 'Home::index');
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+
 
 
 /*

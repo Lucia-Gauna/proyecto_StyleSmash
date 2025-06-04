@@ -1,54 +1,25 @@
-<!-- Vista del formulario de registro en CodeIgniter 4 -->
-<link href="assets/css/miestiloBack.css" rel="stylesheet">
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-    
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="<?= base_url('assets/img/videofondo.mp4') ?>" type="video/mp4">
-        Tu navegador no soporta videos HTML5.
-    </video>
 
-        <!-- Contenido encima del video -->
-    <div class="d-flex justify-content-center align-items-center">
-        <h2 class="text-center mb-3">Registrarse</h2>
+<?php $validation = \Config\Services::validation(); ?>
+<head>
+    <link href="assets/css/miestiloBack.css" rel="stylesheet">
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center mt-5">
+                <h1 class="display-4">Registrarse</h1>
+            </div>
+        </div>
     </div>
 
-    <?php 
-    // Accedemos al servicio de validación de CodeIgniter
-    $validation = \Config\Services::validation(); 
-    ?>
-
-        <!-- Formulario que se enviará por POST -->
-    <form method="post" action="<?= base_url('/enviar-form') ?>">
-        
-        <!-- Token de seguridad -->
-        <?= csrf_field(); ?>
-
-        <!-- Mensajes de error en general (fallo en el registro) -->
-        <?php if (!empty(session()->getFlashdata('fail'))): ?>
-            <div class="alert alert-danger">
-                <?= session()->getFlashdata('fail'); ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Mensajes de éxito -->
-        <?php if (!empty(session()->getFlashdata('success'))): ?>
-            <div class="alert alert-success">
-                <?= session()->getFlashdata('success'); ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Contenedor del formulario con Bootstrap -->
-        <div class="card-body justify-content-center" media="(max-width:768px)">
-
-            <!-- Campo: Nombre -->
+   <form id="registroForm" method="post" action="<?= base_url('/enviar-form') ?>">
             <div class="container d-flex justify-content-center mt-4">
                 <div class="mb-2" style="width: 500px; margin-top: -20px; color: white">
-                     <label for="nombre" class="form-label">Nombre</label>
+                     <label for="nombre" class="form-label">Apellido</label>
                      <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre">
                 </div>
-            
-
-
                 <!-- Mostrar error si el campo "nombre" no es válido -->
                 <?php if ($validation->getError('nombre')): ?>
                     <div class="alert alert-danger mt-2">
@@ -132,12 +103,14 @@
                 <?php endif; ?>
             </div>
 
-            <!-- Botón de enviar -->
-             <div class="mt-4">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
-             </div>
+             <!-- Botón de enviar -->
+            <div class="boton-registro">
+                <button type="submit" class="btn btn-success">Registrarse</button>
+            </div>
             
-
-        </div>
     </form>
-</div>
+
+   
+
+</body>
+

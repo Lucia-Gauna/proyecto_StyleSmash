@@ -42,17 +42,13 @@
       </div>
 
     <?php elseif ($perfil == 2): ?>
-      <!-- CLIENTE -->
-      <div class="btn btn-info active btnUser btn-sm">
-        <a href="#">CLIENTE: <?php echo esc($nombre); ?></a>
-      </div>
 
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('tienda_view'); ?>">Tienda</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">¿Quiénes Somos?</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('contacto'); ?>">Contacto</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('logout'); ?>">Cerrar sesión</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('logout'); ?>">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -62,8 +58,7 @@
       </a>
 
       <!-- Carrito -->
-      <div class="position-absolute end-0 p-3">
-        <a href="#" class="btn btn-outline-secondary">
+      <div class="position-absolute end-0 p-3">        <a href="#" class="btn btn-outline-secondary">
           🛒 Carrito
         </a>
       </div>
@@ -80,8 +75,8 @@
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>
 
           <!-- Enlaces que lo llevan al login si intenta usar funciones -->
-          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/registro'); ?>" onclick="alert('Debes iniciar sesión para acceder a la tienda.')">Tienda</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/registro'); ?>" onclick="alert('Debes iniciar sesión para contactarnos.')">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/login'); ?>" >Tienda</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/login'); ?>" >Contacto</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">¿Quiénes Somos?</a></li>
         </ul>
       </div>
