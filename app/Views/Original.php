@@ -2,7 +2,7 @@
     .home-section {
       position: relative;
       min-height: 100vh;
-      background: url('assets/img/download(1).gif') no-repeat center center / cover;
+      background: url('assets/img/head.gif') no-repeat center center / cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
