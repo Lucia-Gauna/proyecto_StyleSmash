@@ -15,7 +15,7 @@
     <?php if ($perfil == 1): ?>
       <!-- ADMINISTRADOR -->
       <div class="btn btn-success active btnUser btn-sm">
-        <a href="#" class="text-white text-decoration-none">USUARIO: <?php echo esc($nombre); ?></a>
+        <a href="#" >USUARIO: <?php echo esc($nombre); ?></a>
       </div>
 
       <div class="collapse navbar-collapse" id="navbarContent">
@@ -27,7 +27,7 @@
             <a class="nav-link" href="<?php echo base_url('lista usuarios'); ?>">CRUD usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('producto'); ?>">CRUD productos</a>
+            <a class="nav-link" href="<?php echo base_url('producto controller'); ?>">CRUD productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('ventas'); ?>">Muestra ventas</a>
@@ -72,7 +72,7 @@
            <img src="<?php echo base_url('assets/img/logonuevo.png'); ?>" alt="Logo de la empresa">
         </a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/login'); ?>">Iniciar Sesión</a></li>
 
           <!-- Enlaces que lo llevan al login si intenta usar funciones -->
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/login'); ?>" >Tienda</a></li>

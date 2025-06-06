@@ -58,8 +58,6 @@
   </style>
 
 
-
-
   <!-- SECCIÓN PRINCIPAL -->
   <section class="home-section">
     <div class="content-container">
@@ -68,7 +66,6 @@
     </div>
   </section>
       <div class="col-md-6 text-md-start text-center">
-        <h1 class="hero-title">Equipate para ganar.</h1>
       </div>
     </div>
   </div>

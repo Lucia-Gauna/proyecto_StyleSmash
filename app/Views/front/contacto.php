@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacto | Style Smash</title>
   <link rel="stylesheet" href="/proyecto_StyleSmash/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/proyecto_StyleSmash/assets/css/style.css">
+  <link rel="stylesheet" href="/proyecto_StyleSmash/assets/css/miestilo.css">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
           <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
         </div>
         <div class="d-flex gap-2 flex-wrap">
-          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          <button type="submit" class="btn btn-success">Enviar mensaje</button>
           <button type="reset" class="btn btn-secondary">Borrar formulario</button>
         </div>
       </form>
@@ -42,6 +42,9 @@
 </main>
 
 <style>
+
+  .body{ background-color: #ded8ca; }
+
   @media (max-width: 400px) {
     h2 {
       font-size: 1.4rem;
