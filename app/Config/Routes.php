@@ -49,13 +49,20 @@ $routes->get('/logout', 'Login_controller::logout');
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
-//rutas de producto
-$routes->get('/crear', 'Productocontroller::creaproducto');
-$routes->post('/enviar-prod', 'Productocontroller::store');
-$routes->get('/listar', 'Productocontroller::index');
-$routes->get('/editar/(:num)', 'Productocontroller::edit/$1');
-$routes->post('/actualizar/(:num)', 'Productocontroller::update/$1');
-$routes->get('/eliminar/(:num)', 'Productocontroller::delete/$1');
+// Rutas de Productos
+$routes->get('/producto', 'producto_controller::index', ['filter' => 'auth']); // Mostrar listado
+
+$routes->get('/crear', 'producto_controller::index', ['filter' => 'auth']); // También lista
+$routes->get('/agregar', 'producto_controller::creaproducto', ['filter' => 'auth']); // Formulario de alta
+$routes->post('/enviar-prod', 'producto_controller::store', ['filter' => 'auth']); // Acción de alta
+
+$routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1', ['filter' => 'auth']); // Formulario de edición
+$routes->post('/modifica/(:num)', 'producto_controller::modifica/$1', ['filter' => 'auth']); // Acción de edición
+
+$routes->get('/borrar/(:num)', 'producto_controller::deleteproducto/$1'); // Eliminado lógico
+
+$routes->get('/eliminados', 'producto_controller::eliminados', ['filter' => 'auth']); // Ver eliminados
+$routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1', ['filter' => 'auth']); // Reactivar producto
 
 /*
  * --------------------------------------------------------------------

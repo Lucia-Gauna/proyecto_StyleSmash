@@ -2,7 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class Producto_model extends Model
+class producto_model extends Model
 {
     protected $table = 'productos';
     protected $primaryKey = 'id';
@@ -15,7 +15,7 @@ class Producto_model extends Model
     }
 
     // Obtener productos eliminados
-    public function getProductoEliminados()
+    public function getProductoAllEliminados()
     {
         return $this->where('eliminado', 'SI')->findAll();
     }

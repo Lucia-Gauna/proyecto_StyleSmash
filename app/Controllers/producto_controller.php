@@ -1,10 +1,10 @@
 <?php
 namespace App\Controllers;
 use App\Models\producto_model;
-use App\Models\categoria_model;
+use App\Models\categorias_model;
 use CodeIgniter\Controller;
 
-class Productocontroller extends Controller
+class producto_controller extends Controller
 {
     public function __construct(){
         helper(['url', 'form']);
@@ -24,7 +24,7 @@ class Productocontroller extends Controller
 
 //funciones de alta
     public function creaproducto(){
-        $categoriasmodel = new categoria_model();
+        $categoriasmodel = new categorias_model();
         $data['categorias'] = $categoriasmodel->getCategorias();
 
         $dato['titulo'] = 'Alta producto';
@@ -48,7 +48,7 @@ class Productocontroller extends Controller
         $productoModel = new producto_model();
 
         if(!$input){
-            $categorias_model = new categoria_model();
+            $categorias_model = new categorias_model();
             $data['categorias'] = $categorias_model->getCategorias();
             $data['validation'] = $this->validator;
 
@@ -83,11 +83,11 @@ class Productocontroller extends Controller
 
     public function singleproducto($id = null){
         $productoModel = new producto_model();
-        $data['old'] = $productoModel->where('id', $id)->first();
-        if (empty($data['old'])) {
+        $data['producto'] = $productoModel->where('id', $id)->first();
+        if (empty($data['producto'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('No se encontró el producto');
         }
-        $categoriasM = new categoria_model();
+        $categoriasM = new categorias_model();
         $data['categorias'] = $categoriasM->getCategorias();
 
         $dato['titulo'] = 'Crud_productos';
@@ -129,11 +129,17 @@ class Productocontroller extends Controller
         return redirect()->to('crear');
     }
 
-    public function deleteproducto($id){
+    public function deleteproducto($id)
+    {
         $productoModel = new producto_model();
-        $data['eliminado'] = 'SI';
-        $productoModel->update($id, $data);
-        return redirect()->to('crear');
+        $producto = $productoModel->find($id);
+
+        if (!$producto) {
+        throw new \CodeIgniter\Exceptions\PageNotFoundException('No se encontró el producto.');
+        }
+
+        $productoModel->update($id, ['eliminado' => 'SI']);
+        return redirect()->to('/crear')->with('success', 'Producto eliminado correctamente');
     }
 
     public function eliminados(){
@@ -141,7 +147,7 @@ class Productocontroller extends Controller
         $data['producto'] = $productoModel->getProductoAllEliminados();
 
         $dato['titulo'] = 'Crud_productos';
-        echo view('front/head_view_crud', $dato);
+        echo view('front/head_view', $dato);
         echo view('front/nav_view');
         echo view('back/productos/productos_eliminados', $data);
         echo view('front/footer_view');

@@ -2,7 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class Categoria_model extends Model
+class categorias_model extends Model
 {
     protected $table = 'categorias';
     protected $primaryKey = 'id';
@@ -11,6 +11,6 @@ class Categoria_model extends Model
     // Devuelve todas las categorías activas
     public function getCategorias()
     {
-        return $this->where('activo', 'SI')->findAll();
+        return $this->where('activo', '1' )->findAll();
     }
 }

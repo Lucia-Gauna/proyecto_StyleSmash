@@ -27,7 +27,7 @@
             <a class="nav-link" href="<?php echo base_url('lista usuarios'); ?>">CRUD usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('producto controller'); ?>">CRUD productos</a>
+            <a class="nav-link" href="<?php echo base_url('producto'); ?>">CRUD productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('ventas'); ?>">Muestra ventas</a>

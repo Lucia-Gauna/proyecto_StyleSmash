@@ -86,6 +86,18 @@
                 <?php endif; ?>
             </div>
 
+            <!-- Stock actual -->
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input class="form-control" type="text" name="stock" id="stock"
+                    value="<?= set_value('stock_min'); ?>">
+                <?php if ($validation->getError('stock')): ?>
+                    <div class="alert alert-danger mt-2">
+                        <?= $validation->getError('stock'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
             <!-- Imagen -->
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen</label>

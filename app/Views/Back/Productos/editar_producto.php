@@ -12,7 +12,8 @@
         <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
     <?php endif; ?>
 
-    <form action="<?= base_url('/actualizar/' . $producto['id']) ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('/modifica/' . $producto['id']) ?>" method="post" enctype="multipart/form-data">
+
         <?= csrf_field(); ?>
 
         <!-- Nombre del producto -->
@@ -94,7 +95,7 @@
 
         <!-- Botones -->
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-success">Actualizar</button>
             <a href="<?= base_url('listar') ?>" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
