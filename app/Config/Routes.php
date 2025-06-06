@@ -49,7 +49,13 @@ $routes->get('/logout', 'Login_controller::logout');
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
-
+//rutas de producto
+$routes->get('/crear', 'Productocontroller::creaproducto');
+$routes->post('/enviar-prod', 'Productocontroller::store');
+$routes->get('/listar', 'Productocontroller::index');
+$routes->get('/editar/(:num)', 'Productocontroller::edit/$1');
+$routes->post('/actualizar/(:num)', 'Productocontroller::update/$1');
+$routes->get('/eliminar/(:num)', 'Productocontroller::delete/$1');
 
 /*
  * --------------------------------------------------------------------
