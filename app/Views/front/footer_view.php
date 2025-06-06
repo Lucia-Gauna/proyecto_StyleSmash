@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row align-items-start">
       <!-- Título a la izquierda -->
-      <div class="col-12 col-md-4 mb-3 mb-md-0 text-center text-md-start">
+      <div class="col-12 col-md-4 mb-3 mb-md-0 text-justify text-md-start">
         <h4 class="footer-title">Style Smash</h4>
 
         <!-- Link a Términos y Condiciones -->

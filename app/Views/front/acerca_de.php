@@ -25,7 +25,7 @@
       </div>
 
       <!-- Imagen a la derecha -->
-      <div class="col-12 col-md-6 text-center">
+      <div class="col-12 col-md-6 text-justify">
         <img src="assets/img/nuestroequipo.jpeg" alt="Nuestro equipo" class="img-fluid rounded shadow">
       </div>
     </div>
