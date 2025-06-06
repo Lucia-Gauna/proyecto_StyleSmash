@@ -14,8 +14,8 @@
 
     <?php if ($perfil == 1): ?>
       <!-- ADMINISTRADOR -->
-      <div class="btn btn-info active btnUser btn-sm">
-        <a href="#">USUARIO: <?php echo esc($nombre); ?></a>
+      <div class="btn btn-success active btnUser btn-sm">
+        <a href="#" class="text-white text-decoration-none">USUARIO: <?php echo esc($nombre); ?></a>
       </div>
 
       <div class="collapse navbar-collapse" id="navbarContent">
