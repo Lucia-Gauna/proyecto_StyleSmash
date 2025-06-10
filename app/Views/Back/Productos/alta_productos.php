@@ -113,7 +113,7 @@
             <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-success">Enviar</button>
                 <button type="reset" class="btn btn-danger">Cancelar</button>
-                <a href="<?= base_url('crear'); ?>" class="btn btn-secondary">Volver</a>
+                <a href="<?= base_url('producto'); ?>" class="btn btn-secondary">Volver</a>
             </div>
         </form>
     </div>

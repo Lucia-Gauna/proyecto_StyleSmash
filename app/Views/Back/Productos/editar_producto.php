@@ -93,10 +93,10 @@
             <?php endif; ?>
         </div>
 
-        <!-- Botones -->
+        <!-- Botones MODIFICAR LINK LISTAR -->
         <div class="text-center">
             <button type="submit" class="btn btn-success">Actualizar</button>
-            <a href="<?= base_url('listar') ?>" class="btn btn-secondary">Cancelar</a>
+            <a href="<?= base_url('producto') ?>" class="btn btn-secondary">Cancelar</a> 
         </div>
     </form>
 </div>

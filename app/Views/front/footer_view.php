@@ -1,4 +1,4 @@
-
+</main> 
 <footer class="footer bg-dark text-white py-4 mt-5">
   <div class="container">
     <div class="row align-items-start">
@@ -40,3 +40,6 @@
     </div>
   </div>
 </footer>
+
+</body>
+</html>

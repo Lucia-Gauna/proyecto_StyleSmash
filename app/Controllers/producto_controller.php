@@ -27,6 +27,9 @@ class producto_controller extends Controller
         $categoriasmodel = new categorias_model();
         $data['categorias'] = $categoriasmodel->getCategorias();
 
+        $productoModel = new producto_model();
+        $data['producto'] = $productoModel->getProductoAll();
+
         $dato['titulo'] = 'Alta producto';
         echo view('front/head_view', $dato);
         echo view('front/nav_view');
@@ -126,7 +129,7 @@ class producto_controller extends Controller
 
         $productoModel->update($id, $data);
         session()->setFlashdata('success', 'Modificación Exitosa...');
-        return redirect()->to('crear');
+        return redirect()->to('producto');
     }
 
     public function deleteproducto($id)

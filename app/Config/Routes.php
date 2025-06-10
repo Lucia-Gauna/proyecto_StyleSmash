@@ -49,11 +49,22 @@ $routes->get('/logout', 'Login_controller::logout');
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
+//rutas crud usuarios
+$routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'auth']);
+$routes->get('/dar_baja/(:num)', 'Usuario_controller::darBaja/$1', ['filter' => 'auth']);
+$routes->get('/editar_usuario/(:num)', 'Usuario_controller::editar/$1', ['filter' => 'auth']);
+$routes->post('/actualizar_usuario/(:num)', 'Usuario_controller::actualizar/$1', ['filter' => 'auth']);
+$routes->get('usuarios_baja', 'Usuario_controller::usuarios_baja');
+$routes->get('dar_alta/(:num)', 'Usuario_controller::darAlta/$1');
+$routes->get('nuevo_usuario', 'Usuario_controller::formNuevoUsuario');
+$routes->post('guardar_usuario', 'Usuario_controller::guardarUsuario');
+
+
+
 // Rutas de Productos
 $routes->get('/producto', 'producto_controller::index', ['filter' => 'auth']); // Mostrar listado
 
-$routes->get('/crear', 'producto_controller::index', ['filter' => 'auth']); // También lista
-$routes->get('/agregar', 'producto_controller::creaproducto', ['filter' => 'auth']); // Formulario de alta
+$routes->get('/crear', 'producto_controller::creaproducto', ['filter' => 'auth']); // formulario de alta 
 $routes->post('/enviar-prod', 'producto_controller::store', ['filter' => 'auth']); // Acción de alta
 
 $routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1', ['filter' => 'auth']); // Formulario de edición

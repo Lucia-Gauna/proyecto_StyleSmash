@@ -41,6 +41,6 @@
     </div>
 
     <div class="mt-3 text-center">
-        <a href="<?= base_url('crear') ?>" class="btn btn-secondary">Volver</a>
+        <a href="<?= base_url('/producto') ?>" class="btn btn-secondary">Volver</a>
     </div>
 </div>

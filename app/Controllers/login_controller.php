@@ -48,8 +48,8 @@ class Login_controller extends BaseController
                     'apellido'   => $data['apellido'],
                     'email'      => $data['email'],
                     'usuario'    => $data['usuario'],
-                    'perfil_id'  => $data['perfil_id'],
-                    'logged_in'  => true
+                    'id_perfil'  => $data['id_perfil'],
+                    'logueado'  => true
                 ];
                 $session->set($ses_data);
 

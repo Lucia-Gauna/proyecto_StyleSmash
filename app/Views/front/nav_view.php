@@ -1,7 +1,8 @@
 <?php 
   $session = session();
   $nombre = $session->get('nombre');
-  $perfil = $session->get('perfil_id'); 
+  $perfil = $session->get('id_perfil'); 
+  $logueado = $session->get('logueado');
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark position-relative">
@@ -12,22 +13,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <?php if ($perfil == 1): ?>
+    <?php if ($logueado && $perfil == 1): ?>
       <!-- ADMINISTRADOR -->
       <div class="btn btn-success active btnUser btn-sm">
-        <a href="#" >USUARIO: <?php echo esc($nombre); ?></a>
+        <a href="#"  class="text-white" >USUARIO: <?php echo esc($nombre); ?></a>
       </div>
 
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
           <li class="nav-item">
-            <a class="nav-link active" href="<?php echo base_url('prueba'); ?>">Home</a>
+            <a class="nav-link active" href="<?php echo base_url('/'); ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('lista usuarios'); ?>">CRUD usuarios</a>
+            <a class="nav-link" href="<?php echo base_url('usuarios'); ?>">CRUD usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('producto controller'); ?>">CRUD productos</a>
+            <a class="nav-link" href="<?php echo base_url('producto'); ?>">CRUD productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('ventas'); ?>">Muestra ventas</a>
@@ -41,13 +42,20 @@
         </ul>
       </div>
 
-    <?php elseif ($perfil == 2): ?>
+    <?php elseif ($logueado && $perfil == 2): ?>
+
+      <div class="btn btn-success active btnUser btn-sm">
+        <a href="#"  class="text-white" >USUARIO: <?php echo esc($nombre); ?></a>
+      </div>
 
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('tienda_view'); ?>">Tienda</a></li>
+
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">¿Quiénes Somos?</a></li>
+
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('contacto'); ?>">Contacto</a></li>
+          
           <li class="nav-item"><a class="nav-link" href="<?php echo base_url('logout'); ?>">Cerrar Sesión</a></li>
         </ul>
       </div>
@@ -58,7 +66,7 @@
       </a>
 
       <!-- Carrito -->
-      <div class="position-absolute end-0 p-3">        <a href="#" class="btn btn-outline-secondary">
+      <div class="position-absolute end-0 p-3">  <a href="#" class="btn btn-outline-secondary">
           🛒 Carrito
         </a>
       </div>

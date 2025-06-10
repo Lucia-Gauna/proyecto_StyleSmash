@@ -8,7 +8,7 @@
     <?php endif; ?>
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="<?= base_url('agregar') ?>" class="btn btn-success me-2">Agregar</a>
+        <a href="<?= base_url('crear') ?>" class="btn btn-success me-2">Agregar</a>
         <a href="<?= base_url('eliminados') ?>" class="btn btn-danger">Eliminados</a>
     </div>
 
