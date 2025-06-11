@@ -1,6 +1,6 @@
-<div class="container mt-5 mb-5 p-4 bg-white rounded shadow">
+<div class="container mt-5 mb-5 p-4 rounded shadow">
 
-    <h2 class="text-center mb-4">Editar Perfil de Usuario</h2>
+    <h2 class="text-center display-4">Editar Perfil de Usuario</h2>
 
     <?php if(session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>

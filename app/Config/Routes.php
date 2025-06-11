@@ -41,39 +41,45 @@ $routes->get('/comercializacion', 'Home::comercializacion');
 $routes->get('/registro', 'Usuario_controller::registrarse');
 $routes->post('/enviar-form', 'Usuario_controller::formValidation');
 
-// rutas de login
+
+// rutas de login (usuarios)
 $routes->get('/login', 'Login_controller::index');
 $routes->post('/enviarlogin', 'Login_controller::auth');
 $routes->get('/logout', 'Login_controller::logout');
-
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
-//rutas crud usuarios
-$routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'auth']);
-$routes->get('/dar_baja/(:num)', 'Usuario_controller::darBaja/$1', ['filter' => 'auth']);
-$routes->get('/editar_usuario/(:num)', 'Usuario_controller::editar/$1', ['filter' => 'auth']);
-$routes->post('/actualizar_usuario/(:num)', 'Usuario_controller::actualizar/$1', ['filter' => 'auth']);
+
+//rutas crud usuarios(admin)
+$routes->get('/usuarios', 'Usuario_controller::index');
+$routes->get('/dar_baja/(:num)', 'Usuario_controller::darBaja/$1');
+$routes->get('/editar_usuario/(:num)', 'Usuario_controller::editar/$1');
+$routes->post('/actualizar_usuario/(:num)', 'Usuario_controller::actualizar/$1');
 $routes->get('usuarios_baja', 'Usuario_controller::usuarios_baja');
 $routes->get('dar_alta/(:num)', 'Usuario_controller::darAlta/$1');
 $routes->get('nuevo_usuario', 'Usuario_controller::formNuevoUsuario');
 $routes->post('guardar_usuario', 'Usuario_controller::guardarUsuario');
 
 
-
-// Rutas de Productos
-$routes->get('/producto', 'producto_controller::index', ['filter' => 'auth']); // Mostrar listado
-
-$routes->get('/crear', 'producto_controller::creaproducto', ['filter' => 'auth']); // formulario de alta 
-$routes->post('/enviar-prod', 'producto_controller::store', ['filter' => 'auth']); // Acción de alta
-
-$routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1', ['filter' => 'auth']); // Formulario de edición
-$routes->post('/modifica/(:num)', 'producto_controller::modifica/$1', ['filter' => 'auth']); // Acción de edición
-
+// Rutas crud de Productos(admin)
+$routes->get('/producto', 'producto_controller::index'); // Mostrar listado
+$routes->get('/crear', 'producto_controller::creaproducto'); // formulario de alta 
+$routes->post('/enviar-prod', 'producto_controller::store'); // Acción de alta
+$routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1'); // Formulario de edición
+$routes->post('/modifica/(:num)', 'producto_controller::modifica/$1'); // Acción de edición
 $routes->get('/borrar/(:num)', 'producto_controller::deleteproducto/$1'); // Eliminado lógico
+$routes->get('/eliminados', 'producto_controller::eliminados'); // Ver eliminados
+$routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1'); // Reactivar producto
 
-$routes->get('/eliminados', 'producto_controller::eliminados', ['filter' => 'auth']); // Ver eliminados
-$routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1', ['filter' => 'auth']); // Reactivar producto
+// Rutas para el carrito
+$routes->get('carrito', 'carrito_controller::index');
+$routes->post('carrito/agregar/(:num)', 'carrito_controller::agregar/$1');
+$routes->get('carrito/eliminar/(:any)', 'carrito_controller::elimina/$1');
+$routes->get('carrito/confirmar', 'carrito_controller::confirmar');
+
+// Rutas para ver las compras del usuario logueado
+$routes->get('mis_compras', 'carrito_controller::mis_compras');
+
 
 /*
  * --------------------------------------------------------------------

@@ -32,13 +32,19 @@ class Home extends BaseController
     } 
 
     public function tienda_view()
-    {
-        $data['titulo']='Tienda | StyleSmash';
-        echo view ('front/head_view', $data);
-        echo view ('front/nav_view');
-        echo view ('front/tienda_view');
-        echo view ('front/footer_view');
-    } 
+    {   
+        $productoModel = new \App\Models\producto_model();
+        $data['titulo'] = 'Tienda | Style Smash';
+        $data['productos'] = $productoModel
+                          ->where('eliminado', 'NO')
+                          ->findAll(); // trae solo los productos activos
+
+        echo view('front/head_view', $data);
+        echo view('front/nav_view');
+        echo view('front/tienda_view', $data); // pasa $productos a la vista
+        echo view('front/footer_view');
+    }
+
 
     public function terminos()
     {

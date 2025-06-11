@@ -8,47 +8,29 @@
   <link rel="stylesheet" href="assets/css/miestilo.css">
 </head>
 <body>
-  <main class="container my-5">
-    <h2 class="mb-4">Nuestros Productos</h2>
-    <div class="row">
-      <?php
-        // Productos
-        $productos = [
-          ["nombre" => "Paleta Bullpadel XPLO", "imagen" => "bulxplo.png", "precio" => "$500.000"],
-          ["nombre" => "Paleta Wilson Bela V2", "imagen" => "paletawilson.jpeg", "precio" => "$670.000"],
-          ["nombre" => "Paleta Adidas MetalBone", "imagen" => "Metalbone.jpg", "precio" => "$590.000"],
-          ["nombre" => "Paleta Nox AT10", "imagen" => "paletanox.jpeg", "precio" => "$450.000"],
-          ["nombre" => "Paleta Babolat Viper", "imagen" => "viper.png", "precio" => "$530.000"],
-          ["nombre" => "Paleta Head Gravity", "imagen" => "paletahead.png", "precio" => "$430.000"],
-          ["nombre" => "Paleta Siux", "imagen" => "paletasiux.jpg", "precio" => "$420.000"],
-          ["nombre" => "Paleta Royal Pole 42", "imagen" => "Royalpole.png", "precio" => "$280.000"],
-          ["nombre" => "Pelota Bullpadel Next", "imagen" => "pelotabull.jpg", "precio" => "$30.000"],
-          ["nombre" => "Pelota Odea", "imagen" => "pelotaodea.jpg", "precio" => "$14.000"],
-          ["nombre" => "Pelota Nox", "imagen" => "pelotanox.jpg", "precio" => "$27.000"],
-          ["nombre" => "Pelota wilson", "imagen" => "pelotawilson.jpg", "precio" => "$32.000"],
-          ["nombre" => "Bolso Adidas", "imagen" => "bolsoadidas.jpg", "precio" => "$280.000"],
-          ["nombre" => "Bolso Varlion", "imagen" => "bolsovarlion.jpg", "precio" => "$190.000"],
-          ["nombre" => "Bolso babolat", "imagen" => "bolso.jpeg", "precio" => "$300.000"],
-          ["nombre" => "Bolso bullpadel", "imagen" => "bolsobul.png", "precio" => "$300.000"],
+<main class="container my-5">
+  <h2 class="mb-4 display-4 text-center">Nuestros Productos</h2>
+  <div class="row">
+    <?php foreach ($productos as $p): ?>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+        <div class="card h-100 text-justify">
+          <img src="<?= base_url('assets/img/' . $p['imagen']) ?>" class="card-img-top" alt="<?= esc($p['nombre_prod']) ?>">
+          <div class="card-body">
+            <h5 class="card-title"><?= esc($p['nombre_prod']) ?></h5>
+            <p class="card-text">$<?= number_format($p['precio_vta'], 0, ',', '.') ?></p>
+            <form action="<?= base_url('carrito/agregar/' . $p['id']) ?>" method="post">
+             <?= csrf_field() ?>
+             <button type="submit" class="btn btn-outline-dark btn-sm w-100">
+               Agregar al carrito
+             </button>
+            </form>
 
-        ];
-
-        foreach ($productos as $p) {
-          echo '
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-            <div class="card h-100 text-justify">
-              <img src="assets/img/' . $p["imagen"] . '" class="card-img-top" alt="' . $p["nombre"] . '">
-              <div class="card-body">
-                <h5 class="card-title">' . $p["nombre"] . '</h5>
-                <p class="card-text">' . $p["precio"] . '</p>
-                <a href="#" class="btn btn-outline-dark btn-sm">Ver más</a>
-              </div>
-            </div>
-          </div>';
-        }
-      ?>
-    </div>
-  </main>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</main>
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
