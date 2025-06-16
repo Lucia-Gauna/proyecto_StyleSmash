@@ -31,7 +31,7 @@
                                 <img src="<?= base_url('assets/uploads/'.$prod['imagen']) ?>" width="60">
                             </td>
                             <td>
-                                <a href="<?= base_url('activar/'.$prod['id']) ?>" class="btn btn-success btn-sm">Activar</a>
+                                <a href="<?= base_url('activar_pro/'.$prod['id']) ?>" class="btn btn-success btn-sm">Activar</a>
                             </td>
                         </tr>
                     <?php endif; ?>

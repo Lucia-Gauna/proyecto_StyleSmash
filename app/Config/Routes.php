@@ -75,7 +75,7 @@ $routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1'); 
 $routes->get('carrito', 'carrito_controller::index');
 $routes->post('carrito/agregar/(:num)', 'carrito_controller::agregar/$1');
 $routes->get('carrito/eliminar/(:any)', 'carrito_controller::elimina/$1');
-$routes->get('carrito/confirmar', 'carrito_controller::confirmar');
+$routes->get('carrito/confirmar', 'carrito_controller::comprar');
 
 // Rutas para ver las compras del usuario logueado
 $routes->get('mis_compras', 'carrito_controller::mis_compras');

@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 class Ventas_detalle_model extends Model
 {
     protected $table = 'ventas_detalle';
-    protected $primaryKey = 'id_detalle';
-    protected $allowedFields = ['id_venta', 'id_producto', 'cantidad', 'precio_unitario'];
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['venta_id', 'producto_id', 'cantidad', 'precio'];
     protected $returnType = 'array';
 
     /**
@@ -27,6 +27,6 @@ class Ventas_detalle_model extends Model
      */
     public function obtenerDetallesPorVenta(int $id_venta)
     {
-        return $this->where('id_venta', $id_venta)->findAll();
+        return $this->where('id', $id_venta)->findAll();
     }
 }

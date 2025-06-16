@@ -160,6 +160,6 @@ class producto_controller extends Controller
         $productoModel = new producto_model();
         $productoModel->update($id, ['eliminado' => 'NO']);
         session()->setFlashdata('success', 'Activación Exitosa...');
-        return redirect()->to('crear');
+        return redirect()->to('producto');
     }
 }

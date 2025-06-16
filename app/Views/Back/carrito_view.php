@@ -20,15 +20,17 @@
               <p class="card-text fw-bold">Subtotal: $<?= number_format($item['subtotal'], 0, ',', '.') ?></p>
 
               <a href="<?= base_url('carrito/eliminar/' . $item['rowid']) ?>" class="btn btn-sm btn-danger mt-2">Eliminar</a>
+             
             </div>
           </div>
         </div>
       <?php endforeach; ?>
     </div>
 
-    <div class="text-end mt-4">
+    <div class="text-end mt-5">
       <h4>Total: $<?= number_format($total, 0, ',', '.') ?></h4>
       <a href="<?= base_url('carrito/confirmar') ?>" class="btn btn-success">Confirmar Compra</a>
+      <a href="<?= base_url('tienda_view') ?>" class="btn btn-success">Seguir comprando</a>
     </div>
   <?php endif; ?>
 </main>

@@ -7,12 +7,12 @@ use CodeIgniter\Model;
 class ventas_cabecera_model extends Model
 {
     protected $table = 'ventas_cabecera';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'venta_id';
 
     protected $allowedFields = [
         'id_usuario',
         'fecha',
-        'total'
+        'total_venta'
     ];
 
     public function insertarCabecera($id_usuario, $total)
@@ -20,7 +20,7 @@ class ventas_cabecera_model extends Model
         $data = [
             'id_usuario' => $id_usuario,
             'fecha'      => date('Y-m-d H:i:s'),
-            'total'      => $total
+            'total_venta'      => $total
         ];
 
         $this->insert($data);

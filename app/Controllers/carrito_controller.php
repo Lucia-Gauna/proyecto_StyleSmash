@@ -27,15 +27,16 @@ class carrito_controller extends BaseController
     {
         $carrito = $this->cart->contents();  // así se llama desde la librería
         $total = $this->cart->total();
-       
+       $total_items = $this ->cart->totalItems();
         $data = [
         'carrito' => $carrito,
         'total'   => $total,
-        'titulo'  => 'Mi Carrito'
+        'titulo'  => 'Mi Carrito',
+        'total_items' => $total_items
         ];
 
         echo view('front/head_view', $data);
-        echo view('front/nav_view');
+        echo view('front/nav_view',$data);
         echo view('Back/carrito_view', $data);
         echo view('front/footer_view');
 
@@ -84,42 +85,47 @@ class carrito_controller extends BaseController
         return redirect()->back();
     }
 
-    // Comprar (guardar en DB y vaciar carrito)
     public function comprar()
-    {
-        $cartItems = $this->cart->contents();
+{
+    $cartItems = $this->cart->contents();
 
-        if (empty($cartItems)) {
-            return redirect()->back()->with('mensaje', 'El carrito está vacío.');
-        }
-
-        $cabeceraModel = new Ventas_cabecera_model();
-        $detalleModel = new Ventas_detalle_model();
-
-        $id_usuario = $this->session->get('id_usuario');
-        $total = $this->cart->total();
-        // Guardar cabecera
-        $cabeceraModel->insert([
-            'id_usuario' => $id_usuario,
-            'fecha' => date('Y-m-d'),
-            'total' => $total,
-        ]);
-
-        $id_venta = $cabeceraModel->insertID();
-
-        // Guardar detalle
-        foreach ($cartItems as $item) {
-            $detalleModel->insert([
-                'venta_id'    => $id_venta,
-                'producto_id' => $item['id'],
-                'cantidad'    => $item['qty'],
-                'precio'      => $item['price'],
-            ]);
-        }
-
-        $this->cart->destroy();
-        return redirect()->to(base_url('/'))->with('mensaje', 'Compra realizada con éxito');
+    if (empty($cartItems)) {
+        return redirect()->back()->with('mensaje', 'El carrito está vacío.');
     }
+
+    $cabeceraModel = new Ventas_cabecera_model();
+    $detalleModel  = new Ventas_detalle_model();
+
+    $id_usuario = $this->session->get('id_usuario');
+    $total      = $this->cart->total();
+
+    // Guardar cabecera
+    $cabeceraModel->insert([
+        'id_usuario'    => $id_usuario,
+        'fecha'         => date('Y-m-d'),
+        'total_ventas'  => $total,
+    ]);
+
+    $venta_id = $cabeceraModel->insertID();
+
+    // Guardar detalle (ignorando entradas que no sean productos)
+    foreach ($cartItems as $item) {
+        if (!isset($item['id'])) {
+            continue;
+        }
+
+        $detalleModel->insert([
+            'venta_id'    => $venta_id,
+            'producto_id' => $item['id'],
+            'cantidad'    => $item['qty'],
+            'precio'      => $item['price'],
+        ]);
+    }
+
+    $this->cart->destroy();
+    return redirect()->to(base_url('mis_compras'))->with('mensaje', 'Compra realizada con éxito');
+}
+
 
      public function mis_compras()
     {
@@ -142,15 +148,15 @@ class carrito_controller extends BaseController
             $detalles = $detallesModel->where('venta_id', $venta['venta_id'])->findAll();
 
             foreach ($detalles as $detalle) {
-                $producto = $productoModel->find($detalle['id_producto']);
+                $producto = $productoModel->find($detalle['producto_id']);
 
                 if ($producto) {
                     $items[] = [
-                        'nombre' => $producto['nombre'],
+                        'nombre_prod' => $producto['nombre_prod'],
                         'imagen' => $producto['imagen'],
-                        'precio_unitario' => $detalle['precio_unitario'],
+                        'precio' => $detalle['precio'],
                         'cantidad' => $detalle['cantidad'],
-                        'subtotal' => $detalle['precio_unitario'] * $detalle['cantidad']
+                        'subtotal' => $detalle['precio'] * $detalle['cantidad']
                     ];
                 }
             }
