@@ -27,25 +27,26 @@
                 </thead>
                 <tbody>
                     <?php $i =0; $total =0; ?>
-                    <?php if (!empty($venta) && is_array($venta)){
-                        foreach ($venta as $row){
-                            $imagen = $row['imagen'];
-                            $i++;
-                            ?>
-                            <tr class="text-center">
-                                <th><?php echo $i ?></th>
-                                <td> <?php echo $row['nombre'] ?></td>
-                                <td> <?php echo $row['nombre_prod'] ?></td>
-                                <td><img width="100" height="55" src="<?php echo base_url('assets/uploads/' .$imagen)?>"></td>
-                                <td> <?php echo number_format($row["cantidad"]) ?></td>
-                                <td><?php echo $row['precio_vta']?></td>
-                                <?php $subtotal= ($row['precio_vta'] * $row['cantidad']);?>
-                                <td>$<?php echo number_format($subtotal, 2) ?></td>
-                                <?php
-                                $total+= $subtotal;S
-                                ?>
-                            </tr>
-                        <?php}?>
+                    <?php if (!empty($venta) && is_array($venta)) {
+    foreach ($venta as $row) {
+        $imagen = $row['imagen'];
+        $i++;
+        $subtotal = $row['precio_vta'] * $row['cantidad'];
+        $total += $subtotal;
+?>
+        <tr class="text-center">
+            <th><?= $i ?></th>
+            <td><?= $row['nombre'] ?></td>
+            <td><?= $row['nombre_prod'] ?></td>
+            <td><img width="100" height="55" src="<?= base_url('assets/uploads/' . $imagen) ?>"></td>
+            <td><?= number_format($row["cantidad"]) ?></td>
+            <td>$<?= number_format($row['precio_vta'], 2) ?></td>
+            <td>$<?= number_format($subtotal, 2) ?></td>
+        </tr>
+<?php
+    } // fin foreach
+} // fin if
+?>
                     
                 </tbody>
             </table>
@@ -64,6 +65,6 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function(){
-        $('#users-list').DataTable();
+        $('#user-list').DataTable();
     });
   </script>
