@@ -1,4 +1,4 @@
-<?php 
+  <?php 
   $session = session();
   $nombre = $session->get('nombre');
   $perfil = $session->get('id_perfil'); 
@@ -31,7 +31,7 @@
             <a class="nav-link" href="<?php echo base_url('producto'); ?>">CRUD productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('ventas'); ?>">Muestra ventas</a>
+            <a class="nav-link" href="<?php echo base_url('/ventas'); ?>">Muestra Ventas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('listarconsultas'); ?>">Consultas</a>

@@ -80,6 +80,15 @@ $routes->get('carrito/confirmar', 'carrito_controller::comprar');
 // Rutas para ver las compras del usuario logueado
 $routes->get('mis_compras', 'carrito_controller::mis_compras');
 
+//rutas venta
+$routes->get('/ventas', 'VentasController::index');
+$routes->get('/ventas/detalle/(:num)', 'VentasController::detalle/$1');
+
+//rutas de consulta
+$routes->get('listar_consultas', 'Usuario_crud_controller::listar_consultas');
+$routes->get('atender_consulta/(:segment)', 'Usuario_crud_controller::atender_consulta/$1');
+$routes->get('eliminar_consulta/(:segment)', 'Usuario_crud_controller::eliminar_consulta/$1');
+
 
 /*
  * --------------------------------------------------------------------
@@ -94,6 +103,7 @@ $routes->get('mis_compras', 'carrito_controller::mis_compras');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
+$routes->setAutoRoute(true);
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
