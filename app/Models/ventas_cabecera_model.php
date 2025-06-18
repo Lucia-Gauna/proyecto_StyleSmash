@@ -19,7 +19,7 @@ class ventas_cabecera_model extends Model
     {
         $data = [
             'id_usuario' => $id_usuario,
-            'fecha'      => date('Y-m-d H:i:s'),
+            'fecha'      => date('Y-m-d h:i:s'),
             'total_venta'      => $total
         ];
 

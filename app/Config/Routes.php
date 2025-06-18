@@ -31,9 +31,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/acerca_de', 'Home::acerca_de');
-$routes->get('/contacto', 'Home::contacto');
-$routes->get('/tienda_view', 'Home::tienda_view');
 
+$routes->get('/tienda_view', 'Home::tienda_view');
+$routes->get('contacto', 'Consulta_controller::contacto');
 $routes->get('/terminos', 'Home::terminos');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
@@ -81,13 +81,24 @@ $routes->get('carrito/confirmar', 'carrito_controller::comprar');
 $routes->get('mis_compras', 'carrito_controller::mis_compras');
 
 //rutas venta
-$routes->get('/ventas', 'VentasController::index');
-$routes->get('/ventas/detalle/(:num)', 'VentasController::detalle/$1');
+$routes->get('ventas', 'VentasController::index');
+$routes->post('ventas/registrar', 'VentasController::registrarVenta');
+$routes->get('ventas/detalle/(:num)', 'VentasController::detalle/$1');
+
 
 //rutas de consulta
-$routes->get('listar_consultas', 'Usuario_crud_controller::listar_consultas');
-$routes->get('atender_consulta/(:segment)', 'Usuario_crud_controller::atender_consulta/$1');
-$routes->get('eliminar_consulta/(:segment)', 'Usuario_crud_controller::eliminar_consulta/$1');
+    
+
+
+    $routes->get('listar_consultas', 'Usuario_crud_controller::listar_consultas');
+    $routes->get('atender_consulta/(:segment)', 'Usuario_crud_controller::atender_consulta/$1');
+    $routes->get('eliminar_consulta/(:segment)', 'Usuario_crud_controller::eliminar_consulta/$1');
+    $routes->get('consulta/nueva', 'Consulta_controller::nueva');
+
+    $routes->post('consulta/guardar', 'Consulta_controller::guardar');
+    $routes->get('consulta/listar', 'Consulta_controller::listar');
+    $routes->get('consulta/atender/(:num)', 'Consulta_controller::atender/$1');
+    $routes->get('consulta/eliminar/(:num)', 'Consulta_controller::eliminar/$1');
 
 
 /*

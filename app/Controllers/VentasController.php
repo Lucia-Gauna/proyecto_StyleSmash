@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\ventas_cabecera_model;
@@ -10,17 +9,22 @@ class VentasController extends Controller
 {
     public function __construct()
     {
-        helper(['url', 'form']);
+        helper(['form', 'url']);
         session();
     }
 
+    // Listado general de ventas
     public function index()
     {
-        // Obtener las cabeceras de todas las ventas
-        $ventasCabecera = new ventas_cabecera_model();
-        $data['ventas'] = $ventasCabecera->findAll();
+        $cabeceraModel = new ventas_cabecera_model();
+        $db = \Config\Database::connect();
+        $builder = $db->table('ventas_cabecera');
+        $builder->select('ventas_cabecera.*, usuario.nombre, usuario.apellido');
+        $builder->join('usuario', 'usuario.id_usuario = ventas_cabecera.id_usuario');
+        $query = $builder->get();
 
-        $data['titulo'] = 'Listado de Ventas';
+        $data['ventas'] = $query->getResultArray();
+        $data['titulo'] = 'Listado de Ventas | StyleSmash';
 
         echo view('front/head_view', $data);
         echo view('front/nav_view');
@@ -28,17 +32,57 @@ class VentasController extends Controller
         echo view('front/footer_view');
     }
 
-    public function detalle($id)
+    // Detalle de una venta específica
+    public function detalle($venta_id)
     {
-        // Obtener el detalle de una venta por ID
         $detalleModel = new ventas_detalle_model();
-        $data['detalle'] = $detalleModel->where('venta_id', $id)->findAll();
+        $db = \Config\Database::connect();
 
-        $data['titulo'] = 'Detalle de Venta';
+        $builder = $db->table('ventas_detalle');
+        $builder->select('ventas_detalle.*, productos.nombre_prod as producto_nombre');
+        $builder->join('productos', 'productos.id = ventas_detalle.producto_id');
+        $builder->where('venta_id', $venta_id);
+        $query = $builder->get();
+
+        $data['detalles'] = $query->getResultArray();
+        $data['titulo'] = 'Detalle de Venta | StyleSmash';
+        $data['venta_id'] = $venta_id;
 
         echo view('front/head_view', $data);
-        echo view('front/nav_view');
+        echo view('front/nav_view'); 
         echo view('back/ventas/detalle_venta', $data);
         echo view('front/footer_view');
     }
+
+    public function registrarVenta()
+{
+    $cabeceraModel = new ventas_cabecera_model();
+    $detalleModel = new ventas_detalle_model();
+
+    $productos = $this->request->getPost('productos'); // array de productos
+
+    $total = 0.0;
+    foreach ($productos as $prod) {
+        $subtotal = $prod['precio'] * $prod['cantidad'];
+        $total += $subtotal;
+    }
+
+    // Usamos TU MÉTODO del modelo para insertar la cabecera con el total
+    $id_usuario = session()->get('id_usuario');
+    $venta_id = $cabeceraModel->insertarCabecera($id_usuario, $total);
+
+    // Ahora insertamos los detalles
+    foreach ($productos as $prod) {
+        $detalleModel->insert([
+            'venta_id' => $venta_id,
+            'producto_id' => $prod['producto_id'],
+            'cantidad' => $prod['cantidad'],
+            'precio' => $prod['precio']
+        ]);
+    }
+
+    session()->setFlashdata('success', 'Venta registrada con éxito.');
+    return redirect()->to('/ventas');
+}
+
 }

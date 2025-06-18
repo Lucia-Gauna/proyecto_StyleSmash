@@ -34,7 +34,7 @@
             <a class="nav-link" href="<?php echo base_url('/ventas'); ?>">Muestra Ventas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('listarconsultas'); ?>">Consultas</a>
+            <a class="nav-link" href="<?php echo base_url('consulta/listar'); ?>">Consultas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('logout'); ?>">Cerrar sesión</a>

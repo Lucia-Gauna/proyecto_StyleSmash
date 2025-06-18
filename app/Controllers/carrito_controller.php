@@ -85,7 +85,7 @@ class carrito_controller extends BaseController
         return redirect()->back();
     }
 
-    public function comprar()
+   public function comprar()
 {
     $cartItems = $this->cart->contents();
 
@@ -99,16 +99,10 @@ class carrito_controller extends BaseController
     $id_usuario = $this->session->get('id_usuario');
     $total      = $this->cart->total();
 
-    // Guardar cabecera
-    $cabeceraModel->insert([
-        'id_usuario'    => $id_usuario,
-        'fecha'         => date('Y-m-d'),
-        'total_ventas'  => $total,
-    ]);
+    
+    $venta_id = $cabeceraModel->insertarCabecera($id_usuario, $total);
 
-    $venta_id = $cabeceraModel->insertID();
-
-    // Guardar detalle (ignorando entradas que no sean productos)
+    
     foreach ($cartItems as $item) {
         if (!isset($item['id'])) {
             continue;
@@ -125,6 +119,7 @@ class carrito_controller extends BaseController
     $this->cart->destroy();
     return redirect()->to(base_url('mis_compras'))->with('mensaje', 'Compra realizada con éxito');
 }
+
 
 
      public function mis_compras()

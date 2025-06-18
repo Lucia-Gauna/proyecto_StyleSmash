@@ -13,14 +13,26 @@
   <h2 class="mb-4">¿Querés contactarnos?</h2>
   <div class="row">
     <div class="col-12 col-md-6">
-      <form action="#" method="post">
+      <?php if (session()->getFlashdata('mensaje')): ?>
+  <div class="alert alert-success"><?= session()->getFlashdata('mensaje') ?></div>
+<?php endif; ?>
+
+      <form action="<?= base_url('/consulta/guardar') ?>" method="post">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
         <div class="mb-3">
-          <label for="correo" class="form-label">Correo electrónico</label>
-          <input type="email" class="form-control" id="correo" name="correo" required>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="correo" name="email" required>
+        </div>
+        <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" required>
         </div>
         <div class="mb-3">
           <label for="mensaje" class="form-label">Mensaje</label>

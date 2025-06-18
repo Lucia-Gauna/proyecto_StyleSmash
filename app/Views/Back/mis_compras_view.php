@@ -19,7 +19,7 @@
 
 <?php foreach ($compras as $compra): ?>
   <?php if (!empty($compra['items'])): ?>
-    <h5 class="text-muted mt-5">Compra del <?= date('d/m/Y', strtotime($compra['fecha'])) ?></h5>
+    <h5 class="text-muted mt-5">Compra del <?= date('d/m/Y h:i:s', strtotime($compra['fecha'])) ?></h5>
 
     <div class="row">
       <?php foreach ($compra['items'] as $item): ?>
