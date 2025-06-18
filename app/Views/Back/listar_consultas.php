@@ -8,7 +8,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 </style>
-<main class="container my-5">
+<main class="container my-5 display-4">
   <h2 class="mb-4 display-4">Consultas Recibidas</h2>
 
   <?php if (session()->getFlashdata('mensaje')): ?>
