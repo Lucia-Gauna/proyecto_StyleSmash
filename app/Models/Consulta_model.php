@@ -1,24 +1,13 @@
 <?php
-namespace App\Models;
 
+namespace App\Models;
 use CodeIgniter\Model;
 
 class Consulta_model extends Model
 {
-    protected $table = 'consulta';
+    protected $table      = 'consultas';
     protected $primaryKey = 'id_consulta';
 
-    protected $allowedFields = [
-        'nombre', 'apellido', 'email', 'telefono', 'mensaje', 'respuesta'
-    ];
-
-    public function getConsultas()
-    {
-        return $this->orderBy('id_consulta', 'DESC')->findAll();
-    }
-
-    public function atender($id)
-    {
-        return $this->update($id, ['respuesta' => 'SI']);
-    }
+    protected $allowedFields = ['nombre', 'email', 'mensaje', 'respondido', 'fecha'];
 }
+

@@ -13,9 +13,10 @@
   <h2 class="mb-4">¿Querés contactarnos?</h2>
   <div class="row">
     <div class="col-12 col-md-6">
+
       <?php if (session()->getFlashdata('mensaje')): ?>
-  <div class="alert alert-success"><?= session()->getFlashdata('mensaje') ?></div>
-<?php endif; ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('mensaje') ?></div>
+      <?php endif; ?>
 
       <form action="<?= base_url('/consulta/guardar') ?>" method="post">
         <div class="mb-3">
@@ -23,16 +24,16 @@
           <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
         <div class="mb-3">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" name="apellido" required>
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" required>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Correo electrónico</label>
           <input type="email" class="form-control" id="correo" name="email" required>
         </div>
         <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="text" class="form-control" id="telefono" name="telefono" required>
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="text" class="form-control" id="telefono" name="telefono">
         </div>
         <div class="mb-3">
           <label for="mensaje" class="form-label">Mensaje</label>
@@ -44,6 +45,7 @@
         </div>
       </form>
     </div>
+
     <div class="col-12 col-md-6">
       <h5 class="mb-3">También podés contactarnos desde:</h5>
       <p><strong>Email:</strong> contacto@stylesmash.com</p>
@@ -53,25 +55,3 @@
   </div>
 </main>
 
-<style>
-
-  .body{ background-color: #ded8ca; }
-
-  @media (max-width: 400px) {
-    h2 {
-      font-size: 1.4rem;
-    }
-    form .form-control {
-      font-size: 0.9rem;
-    }
-    button, .btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-  }
-</style>
-
-
-
-</body>
-</html>

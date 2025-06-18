@@ -12,7 +12,7 @@
       }
 
     .navbar{
-       background-color: rgb(60, 60, 58) ;
+       background-color: rgb(60, 60, 58) !important;
        
     }
 
@@ -185,5 +185,24 @@
       font-size: 0.95rem;
       font-family: Georgia, serif;
     }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1; /* Hace que el contenido principal se expanda */
+  }
+
+  footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+  }
+
    
     

@@ -33,7 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/acerca_de', 'Home::acerca_de');
 
 $routes->get('/tienda_view', 'Home::tienda_view');
-$routes->get('contacto', 'Consulta_controller::contacto');
+$routes->get('contacto', 'Home::contacto');
 $routes->get('/terminos', 'Home::terminos');
 $routes->get('/comercializacion', 'Home::comercializacion');
 
@@ -88,17 +88,11 @@ $routes->get('ventas/detalle/(:num)', 'VentasController::detalle/$1');
 
 //rutas de consulta
     
+$routes->get('consulta/listar', 'Consultas_controller::listar');
+$routes->post('consulta/guardar', 'Consultas_controller::guardar');
+$routes->get('consulta/responder/(:num)', 'Consultas_controller::responder/$1');
+$routes->get('consulta/eliminar/(:num)', 'Consultas_controller::eliminar/$1');
 
-
-    $routes->get('listar_consultas', 'Usuario_crud_controller::listar_consultas');
-    $routes->get('atender_consulta/(:segment)', 'Usuario_crud_controller::atender_consulta/$1');
-    $routes->get('eliminar_consulta/(:segment)', 'Usuario_crud_controller::eliminar_consulta/$1');
-    $routes->get('consulta/nueva', 'Consulta_controller::nueva');
-
-    $routes->post('consulta/guardar', 'Consulta_controller::guardar');
-    $routes->get('consulta/listar', 'Consulta_controller::listar');
-    $routes->get('consulta/atender/(:num)', 'Consulta_controller::atender/$1');
-    $routes->get('consulta/eliminar/(:num)', 'Consulta_controller::eliminar/$1');
 
 
 /*
