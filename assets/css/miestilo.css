@@ -6,10 +6,83 @@
       height: 100%;
     }
 
-    
-    body {
-      background-color: #ded8ca; /*color de fondo del body*/
+
+
+.home-section {
+      position: relative;
+      min-height: 100vh;
+      background: url('../img/head.gif') no-repeat center center / cover !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Degradado superior */
+    .home-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 70%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+      z-index: 1;
+    }
+
+    /* Contenido sobre el fondo */
+    .content-container {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    /* Animación de texto */
+    .animated-text {
+      opacity: 0;
+      transform: translateZ(-100%);
+      animation: slideIn 5.5s forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateZ(0);
+        opacity: 1;
       }
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 400px) {
+      .animated-text {
+        font-size: 1.5rem;
+      }
+
+      .content-container p {
+        font-size: 1rem;
+      }
+    }
+
+
+
+
+    
+ body 
+{
+  background-color: #ded8ca; /*color de fondo del body*/
+}
+
+
+
+/* Transición entre imágenes al hacer hover */
+.producto-imagen-hover {
+  transition: all 0.4s ease-in-out;
+}
+
+/* Este efecto se aplica con JS (ver abajo) */
+
 
     .navbar{
        background-color: rgb(60, 60, 58) !important;

@@ -10,15 +10,17 @@ class Auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        // Si el usuario no está logueado
-        if (!session()->get('logged_in')) {
-            // Redirigir al login
-            return redirect()->to('/login');
+        $session = session();
+
+        // Validar si hay sesión y si el usuario es ADMIN (perfil = 1)
+        if (!$session->get('logueado') || $session->get('id_perfil') != 1) {
+            return redirect()->to('/login'); // o a '/' si querés
         }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Código que se ejecuta luego del controlador (opcional)
+        // Nada necesario aquí
     }
 }
+

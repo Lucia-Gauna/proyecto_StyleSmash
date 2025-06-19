@@ -1,101 +1,56 @@
-<style>
-    .home-section {
-      position: relative;
-      min-height: 100vh;
-      background: url('assets/img/head.gif') no-repeat center center / cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Degradado superior */
-    .home-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 70%;
-      width: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
-      z-index: 1;
-    }
-
-    /* Contenido sobre el fondo */
-    .content-container {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-
-    /* Animación de texto */
-    .animated-text {
-      opacity: 0;
-      transform: translateZ(-100%);
-      animation: slideIn 5.5s forwards;
-    }
-
-    @keyframes slideIn {
-      to {
-        transform: translateZ(0);
-        opacity: 1;
-      }
-    }
-
-    /* Responsive para móviles */
-    @media (max-width: 400px) {
-      .animated-text {
-        font-size: 1.5rem;
-      }
-
-      .content-container p {
-        font-size: 1rem;
-      }
-    }
-  </style>
-
-
-  <!-- SECCIÓN PRINCIPAL -->
-  <section class="home-section">
-    <div class="content-container">
-      <h1 class="animated-text display-4 fw-bold">Bienvenido a Style Smash</h1>
-      <p class="lead">El estilo se encuentra con el pádel</p>
-    </div>
-  </section>
-      <div class="col-md-6 text-md-start text-center">
-      </div>
-    </div>
+<!-- SECCIÓN PRINCIPAL CON FONDO GIF -->
+<section class="home-section">
+  <div class="content-container">
+    <h1 class="animated-text display-4 fw-bold">Bienvenido a Style Smash</h1>
+    <p class="lead">El estilo se encuentra con el pádel</p>
   </div>
 </section>
 
+<!-- SECCIÓN PRODUCTOS DESTACADOS -->
 <div class="container seccion-producto">
-  <h2 class="titulo-grande">Productos destacados</h2>
+  <h2 class="titulo-grande d-flex justify-content-center align-items-center gap-2">
+    <img src="<?= base_url('assets/img/pelota.png') ?>" alt="Pelota" style="width: 35px; height: 35px">
+    Productos destacados
+    <img src="<?= base_url('assets/img/pelota.png') ?>" alt="Pelota" style="width: 35px; height: 35px">
+  </h2>
 
-  <br>
-  <div class="producto-imagen">
-    <img src="assets/img/metalbone2025.png" alt="Paletas de Padel">
+  <div class="row justify-content-center flex-column align-items-center">
+    <!-- Producto 1 -->
+    <div class="col-12 mb-5 text-center">
+      <div class="position-relative overflow-hidden rounded-circle mx-auto" style="width: 250px; height: 250px;">
+        <img src="assets/img/metalbone2025.png" 
+             data-hover="assets/img/Metalbone-perfil-hover.png" 
+             alt="Paletas de Padel" 
+             class="img-fluid w-100 h-100 object-fit-contain producto-hover rounded-circle">
+      </div>
+      <h3 class="producto-nombre mt-3">Paletas</h3>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="col-12 mb-5 text-center">
+      <div class="position-relative overflow-hidden rounded-circle mx-auto" style="width: 250px; height: 250px;">
+        <img src="assets/img/pelotasbul.png" 
+             data-hover="assets/img/pelota-bull-hover.png" 
+             alt="Pelotas de padel" 
+             class="img-fluid w-100 h-100 object-fit-contain producto-hover rounded-circle">
+      </div>
+      <h3 class="producto-nombre mt-3">Pelotas</h3>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="col-12 mb-5 text-center">
+      <div class="position-relative overflow-hidden rounded-circle mx-auto" style="width: 250px; height: 250px;">
+        <img src="assets/img/bolsobab.png" 
+             data-hover="assets/img/bolso-bab-hov.jpg" 
+             alt="Bolso de padel" 
+             class="img-fluid w-100 h-100 object-fit-contain producto-hover rounded-circle">
+      </div>
+      <h3 class="producto-nombre mt-3">Bolsos</h3>
+    </div>
   </div>
-  <h3 class="producto-nombre">Paletas </h3>
-  
-</div>
-<br>
-<div class="producto-imagen">
-    <img src="assets/img/pelotasbul.png" alt="Pelotas de padel">
-  </div>
-  <h3 class="producto-nombre"> Pelotas </h3>
-
-</div>
-<br>
-<div class="producto-imagen">
-    <img src="assets/img/bolsobab.png" alt="Bolso de padel">
-  </div>
-  <h3 class="producto-nombre"> Bolsos </h3>
-
 </div>
 
+<!-- SECCIÓN REDES SOCIALES -->
 <div class="container social-section">
   <h2>Síguenos en las redes sociales</h2>
   <div class="row">
@@ -110,11 +65,36 @@
       foreach ($imagenes as $imagen) {
         echo '
         <div class="col-6 col-md-3 social-card">
-          <img src="assets/img/' . $imagen . '" class="img-fluid social-img" style="max-width: 80px" alt="Producto">
+          <img src="assets/img/' . $imagen . '" class="img-fluid social-img" style="max-width: 100px" alt="Red social">
         </div>';
       }
     ?>
   </div>
 </div>
+
+<!-- SCRIPT CAMBIO DE IMAGEN EN HOVER -->
+<script>
+  document.querySelectorAll('.producto-hover').forEach(function(img) {
+    const original = img.src;
+    const hover = img.getAttribute('data-hover');
+
+    img.addEventListener('mouseover', () => {
+      img.src = hover;
+    });
+
+    img.addEventListener('mouseout', () => {
+      img.src = original;
+    });
+  });
+</script>
+
+<!-- ESTILO EXTRA SOLO PARA INICIO -->
+<style>
+  .producto-nombre {
+    font-size: 2rem;
+    color: #0b7a2f;
+    text-decoration: none;
+  }
+</style>
 
 

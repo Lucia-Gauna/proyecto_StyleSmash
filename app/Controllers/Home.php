@@ -32,18 +32,31 @@ class Home extends BaseController
     } 
 
     public function tienda_view()
-    {   
-        $productoModel = new \App\Models\producto_model();
-        $data['titulo'] = 'Tienda | Style Smash';
-        $data['productos'] = $productoModel
-                          ->where('eliminado', 'NO')
-                          ->findAll(); // trae solo los productos activos
+{   
+    $productoModel = new \App\Models\producto_model();
+    $data['titulo'] = 'Tienda | Style Smash';
 
-        echo view('front/head_view', $data);
-        echo view('front/nav_view');
-        echo view('front/tienda_view', $data); // pasa $productos a la vista
-        echo view('front/footer_view');
+    // Trae solo los productos NO eliminados
+    $productos = $productoModel->where('eliminado', 'NO')->findAll();
+    $productos = $productoModel->obtenerProductosConCategoria();
+
+    // Agrupa productos por categoría
+    $agrupados = [];
+
+    foreach ($productos as $prod) {
+        $categoria = $prod['nombre_categoria']; // Ahora sí, usamos el nombre
+        $agrupados[$categoria][] = $prod;
     }
+
+    $data['productos_por_categoria'] = $agrupados;
+
+
+    echo view('front/head_view', $data);
+    echo view('front/nav_view');
+    echo view('front/tienda_view', $data);
+    echo view('front/footer_view');
+}
+
 
 
     public function terminos()

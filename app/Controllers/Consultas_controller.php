@@ -10,7 +10,7 @@ class Consultas_controller extends BaseController
         $modelo = new Consulta_model();
         $data['consultas'] = $modelo->findAll();
         
-        $data['titulo'] = 'Consultas Recibidas';
+        $data['titulo'] = 'Consultas Recibidas | StyleSmash';
         
         echo view('front/head_view', $data);
         echo view('front/nav_view');

@@ -31,7 +31,7 @@ class carrito_controller extends BaseController
         $data = [
         'carrito' => $carrito,
         'total'   => $total,
-        'titulo'  => 'Mi Carrito',
+        'titulo'  => 'Mi Carrito | StyleSmash',
         'total_items' => $total_items
         ];
 
@@ -133,7 +133,11 @@ class carrito_controller extends BaseController
         $productoModel = new producto_model();
 
         // Trae todas las ventas del usuario
-        $ventas = $ventasModel->where('id_usuario', $id_usuario)->findAll();
+        $ventas = $ventasModel
+            ->where('id_usuario', $id_usuario)
+            ->orderBy('fecha', 'DESC')
+            ->findAll();
+
 
         $compras = [];
 
@@ -163,7 +167,7 @@ class carrito_controller extends BaseController
 
         }
 
-        $data['titulo'] = 'Mis Compras';
+        $data['titulo'] = 'Mis Compras | StyleSmash';
         
         echo view('front/head_view', $data);
         echo view('front/nav_view');

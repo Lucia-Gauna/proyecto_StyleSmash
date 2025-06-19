@@ -51,25 +51,25 @@ $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 
 
 //rutas crud usuarios(admin)
-$routes->get('/usuarios', 'Usuario_controller::index');
-$routes->get('/dar_baja/(:num)', 'Usuario_controller::darBaja/$1');
-$routes->get('/editar_usuario/(:num)', 'Usuario_controller::editar/$1');
-$routes->post('/actualizar_usuario/(:num)', 'Usuario_controller::actualizar/$1');
-$routes->get('usuarios_baja', 'Usuario_controller::usuarios_baja');
-$routes->get('dar_alta/(:num)', 'Usuario_controller::darAlta/$1');
-$routes->get('nuevo_usuario', 'Usuario_controller::formNuevoUsuario');
-$routes->post('guardar_usuario', 'Usuario_controller::guardarUsuario');
+$routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'auth']);
+$routes->get('/dar_baja/(:num)', 'Usuario_controller::darBaja/$1', ['filter' => 'auth']);
+$routes->get('/editar_usuario/(:num)', 'Usuario_controller::editar/$1', ['filter' => 'auth']);
+$routes->post('/actualizar_usuario/(:num)', 'Usuario_controller::actualizar/$1', ['filter' => 'auth']);
+$routes->get('usuarios_baja', 'Usuario_controller::usuarios_baja', ['filter' => 'auth']);
+$routes->get('dar_alta/(:num)', 'Usuario_controller::darAlta/$1', ['filter' => 'auth']);
+$routes->get('nuevo_usuario', 'Usuario_controller::formNuevoUsuario', ['filter' => 'auth']);
+$routes->post('guardar_usuario', 'Usuario_controller::guardarUsuario', ['filter' => 'auth']);
 
 
 // Rutas crud de Productos(admin)
-$routes->get('/producto', 'producto_controller::index'); // Mostrar listado
-$routes->get('/crear', 'producto_controller::creaproducto'); // formulario de alta 
-$routes->post('/enviar-prod', 'producto_controller::store'); // Acción de alta
-$routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1'); // Formulario de edición
-$routes->post('/modifica/(:num)', 'producto_controller::modifica/$1'); // Acción de edición
-$routes->get('/borrar/(:num)', 'producto_controller::deleteproducto/$1'); // Eliminado lógico
-$routes->get('/eliminados', 'producto_controller::eliminados'); // Ver eliminados
-$routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1'); // Reactivar producto
+$routes->get('/producto', 'producto_controller::index', ['filter' => 'auth']); // Mostrar listado
+$routes->get('/crear', 'producto_controller::creaproducto', ['filter' => 'auth']); // formulario de alta 
+$routes->post('/enviar-prod', 'producto_controller::store', ['filter' => 'auth']); // Acción de alta
+$routes->get('/editar/(:num)', 'producto_controller::singleproducto/$1', ['filter' => 'auth']); // Formulario de edición
+$routes->post('/modifica/(:num)', 'producto_controller::modifica/$1', ['filter' => 'auth']); // Acción de edición
+$routes->get('/borrar/(:num)', 'producto_controller::deleteproducto/$1', ['filter' => 'auth']); // Eliminado lógico
+$routes->get('/eliminados', 'producto_controller::eliminados', ['filter' => 'auth']); // Ver eliminados
+$routes->get('/activar_pro/(:num)', 'producto_controller::activarproducto/$1', ['filter' => 'auth']); // Reactivar producto
 
 // Rutas para el carrito
 $routes->get('carrito', 'carrito_controller::index');
@@ -78,20 +78,20 @@ $routes->get('carrito/eliminar/(:any)', 'carrito_controller::elimina/$1');
 $routes->get('carrito/confirmar', 'carrito_controller::comprar');
 
 // Rutas para ver las compras del usuario logueado
-$routes->get('mis_compras', 'carrito_controller::mis_compras');
+$routes->get('mis_compras', 'carrito_controller::mis_compras', ['filter' => 'auth']);
 
 //rutas venta
 $routes->get('ventas', 'VentasController::index');
 $routes->post('ventas/registrar', 'VentasController::registrarVenta');
-$routes->get('ventas/detalle/(:num)', 'VentasController::detalle/$1');
+$routes->get('ventas/detalle/(:num)', 'VentasController::detalle/$1', ['filter' => 'auth']);
 
 
 //rutas de consulta
     
-$routes->get('consulta/listar', 'Consultas_controller::listar');
-$routes->post('consulta/guardar', 'Consultas_controller::guardar');
-$routes->get('consulta/responder/(:num)', 'Consultas_controller::responder/$1');
-$routes->get('consulta/eliminar/(:num)', 'Consultas_controller::eliminar/$1');
+$routes->get('consulta/listar', 'Consultas_controller::listar', ['filter' => 'auth']);
+$routes->post('consulta/guardar', 'Consultas_controller::guardar', ['filter' => 'auth']);
+$routes->get('consulta/responder/(:num)', 'Consultas_controller::responder/$1', ['filter' => 'auth']);
+$routes->get('consulta/eliminar/(:num)', 'Consultas_controller::eliminar/$1', ['filter' => 'auth']);
 
 
 

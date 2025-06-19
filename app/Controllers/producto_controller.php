@@ -15,7 +15,7 @@ class producto_controller extends Controller
         $productoModel = new producto_model();
         $data['producto'] = $productoModel->getProductoAll();
 
-        $dato['titulo'] = 'Crud_productos';
+        $dato['titulo'] = 'Lista de Productos | StyleSmash';
         echo view('front/head_view', $dato);
         echo view('front/nav_view');
         echo view('back/productos/productos', $data);
@@ -30,7 +30,7 @@ class producto_controller extends Controller
         $productoModel = new producto_model();
         $data['producto'] = $productoModel->getProductoAll();
 
-        $dato['titulo'] = 'Alta producto';
+        $dato['titulo'] = 'Alta producto | StyleSmash';
         echo view('front/head_view', $dato);
         echo view('front/nav_view');
         echo view('back/productos/alta_productos', $data);
@@ -55,7 +55,7 @@ class producto_controller extends Controller
             $data['categorias'] = $categorias_model->getCategorias();
             $data['validation'] = $this->validator;
 
-            $dato['titulo'] = 'Alta';
+            $dato['titulo'] = 'Alta producto | StyleSmash';
             echo view('front/head_view', $dato);
             echo view('front/nav_view');
             echo view('back/productos/alta_productos', $data);
@@ -93,7 +93,7 @@ class producto_controller extends Controller
         $categoriasM = new categorias_model();
         $data['categorias'] = $categoriasM->getCategorias();
 
-        $dato['titulo'] = 'Crud_productos';
+        $dato['titulo'] = 'Editar Producto | StyleSmash';
         echo view('front/head_view', $dato);
         echo view('front/nav_view');
         echo view('back/productos/editar_producto', $data);
@@ -149,7 +149,7 @@ class producto_controller extends Controller
         $productoModel = new producto_model();
         $data['producto'] = $productoModel->getProductoAllEliminados();
 
-        $dato['titulo'] = 'Crud_productos';
+        $dato['titulo'] = 'Productos Eliminados | StyleSmash';
         echo view('front/head_view', $dato);
         echo view('front/nav_view');
         echo view('back/productos/productos_eliminados', $data);

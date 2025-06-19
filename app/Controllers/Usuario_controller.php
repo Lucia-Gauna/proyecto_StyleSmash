@@ -70,7 +70,7 @@ class Usuario_controller extends Controller
         $query = $builder->get();
 
         $data['usuarios'] = $query->getResultArray();
-        $data['titulo'] = 'Listado de Usuarios';
+        $data['titulo'] = 'Listado de Usuarios | StyleSmash';
 
         echo view('front/head_view', $data);
         echo view('front/nav_view');
