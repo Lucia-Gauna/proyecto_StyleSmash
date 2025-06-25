@@ -44,7 +44,7 @@ class Home extends BaseController
     $agrupados = [];
 
     foreach ($productos as $prod) {
-        $categoria = $prod['nombre_categoria']; // Ahora sí, usamos el nombre
+        $categoria = $prod['nombre_categoria'];
         $agrupados[$categoria][] = $prod;
     }
 

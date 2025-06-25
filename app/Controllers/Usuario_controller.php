@@ -18,7 +18,7 @@ class Usuario_controller extends Controller
         $data['titulo'] = 'Registro';
         echo view('front/head_view', $data);
         echo view('front/nav_view');
-        echo view('Back/registrarse'); // Asegurate que el archivo sea correcto
+        echo view('Back/registrarse'); 
         echo view('front/footer_view');
     }
 
@@ -50,7 +50,7 @@ class Usuario_controller extends Controller
                 'email'    => $this->request->getVar('email'),
                 'pass'     => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
                 'baja'     => 'NO',
-                'id_perfil'=> 1 // Por defecto cliente
+                'id_perfil'=> 2 // Por defecto cliente
             ]);
 
             session()->setFlashdata('success', 'Usuario registrado con éxito');
@@ -80,7 +80,7 @@ class Usuario_controller extends Controller
 
     
 
-    // Dar de baja (baja lógica)
+    // Dar de baja
     public function darBaja($id)
     {
         $usuarioModel = new Usuario_model();
@@ -104,7 +104,7 @@ class Usuario_controller extends Controller
         $perfil = $perfilModel->find($usuario['id_perfil']);
         $usuario['perfil'] = $perfil['descripcion'];
 
-        // Obtener todos los perfiles para el <select>
+        // todos los perfiles 
         $perfiles = $perfilModel->findAll();
 
         $data['usuario'] = $usuario;
@@ -150,7 +150,7 @@ class Usuario_controller extends Controller
 
         echo view('front/head_view', $data);
         echo view('front/nav_view');
-        echo view('back/usuarios_baja', $data); // vista que vas a crear
+        echo view('back/usuarios_baja', $data); 
         echo view('front/footer_view');
     }
 
@@ -164,7 +164,7 @@ class Usuario_controller extends Controller
         return redirect()->to('/usuarios_baja')->with('success', 'Usuario dado de alta correctamente');
     }
 
-    //metodo agregar nuevo usuariocomo admin
+    
     public function formNuevoUsuario()
     {
         $perfilModel = new \App\Models\perfiles_model();
@@ -184,21 +184,21 @@ class Usuario_controller extends Controller
         $email     = $this->request->getPost('email');
         $usuario   = $this->request->getPost('usuario');
 
-        // Verificar si el email ya existe
+        // Verifica si el email ya existe
         if ($usuarioModel->where('email', $email)->first()) {
             return redirect()->back()
             ->withInput()
             ->with('error', 'El email ya está registrado');
         }
 
-        // Verificar si el nombre de usuario ya existe
+        // Verifica si el nombre de usuario ya existe
         if ($usuarioModel->where('usuario', $usuario)->first()) {
             return redirect()->back()
             ->withInput()
             ->with('error', 'El nombre de usuario ya está en uso');
         }
 
-        // Insertar si pasó la validación
+        // Inserta si pasó la validación
         $data = [
             'nombre'    => $this->request->getPost('nombre'),
             'apellido'  => $this->request->getPost('apellido'),

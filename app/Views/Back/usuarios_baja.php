@@ -42,7 +42,7 @@
     <div class="text-end mt-3">
         <a href="<?= base_url('usuarios') ?>" class="btn btn-secondary">Volver</a>
       </div>
-    <!-- mantiene al footer al pie de pagina aunque este vacia la lista -->
+   
     <?php if (empty($usuarios) || count($usuarios) < 4): ?>
         <div style="height: 23vh;"></div>
     <?php endif; ?>

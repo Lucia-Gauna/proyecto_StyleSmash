@@ -27,7 +27,6 @@
         <div class="mb-4">
     <label for="id_perfil" class="form-label">Rol / Perfil</label>
     <?php if ($usuario['id_usuario'] == session()->get('id_usuario')): ?>
-        <!-- No editable si es el usuario actual -->
          
         <input type="text" class="form-control" value="<?= esc($usuario['perfil']) ?>" disabled>
         <input type="hidden" name="id_perfil" value="<?= esc($usuario['id_perfil']) ?>">

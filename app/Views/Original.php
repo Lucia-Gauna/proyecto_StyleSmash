@@ -72,7 +72,7 @@
   </div>
 </div>
 
-<!-- SCRIPT CAMBIO DE IMAGEN EN HOVER -->
+<!-- CAMBIO DE IMAGEN EN HOVER -->
 <script>
   document.querySelectorAll('.producto-hover').forEach(function(img) {
     const original = img.src;
@@ -88,7 +88,7 @@
   });
 </script>
 
-<!-- ESTILO EXTRA SOLO PARA INICIO -->
+
 <style>
   .producto-nombre {
     font-size: 2rem;

@@ -33,10 +33,10 @@
                         <span class="d-inline d-md-none"><i class="bi bi-envelope-fill"></i></span> 
                       </a>
                     <?php else: ?>
-                      <a href="<?= base_url('consulta/eliminar/' . $consulta['id_consulta']) ?>" class="btn btn-danger btn-sm">
-                        <span class="d-none d-md-inline">Eliminar</span>
-                        <span class="d-inline d-md-none">🗑️</span>
-                      </a>
+                     <button class="btn btn-secondary btn-sm" disabled>
+                        <span class="d-none d-md-inline">Respondido</span>
+                        <span class="d-inline d-md-none">🗳️</span>
+                      </button>
                     <?php endif; ?>
                   </div>
                 </td>

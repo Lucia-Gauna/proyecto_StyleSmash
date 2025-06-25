@@ -34,7 +34,7 @@
       </table>
     </div>
 
-    <!-- Separador inferior en móviles -->
+    
     <?php if (count($ventas) < 5): ?>
       <div style="height: 20vh;"></div>
     <?php endif; ?>

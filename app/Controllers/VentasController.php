@@ -67,11 +67,9 @@ class VentasController extends Controller
         $total += $subtotal;
     }
 
-    // Usamos TU MÉTODO del modelo para insertar la cabecera con el total
     $id_usuario = session()->get('id_usuario');
     $venta_id = $cabeceraModel->insertarCabecera($id_usuario, $total);
 
-    // Ahora insertamos los detalles
     foreach ($productos as $prod) {
         $detalleModel->insert([
             'venta_id' => $venta_id,

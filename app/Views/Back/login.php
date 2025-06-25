@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesión | StyleSmash</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap y tu hoja de estilo -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/miestiloBack.css') ?>" rel="stylesheet">
 </head>

@@ -20,7 +20,7 @@
         <label for="nombre_prod" class="form-label">Nombre del producto</label>
         <input type="text" class="form-control" name="nombre_prod" id="nombre_prod"
                value="<?= set_value('nombre_prod'); ?>" placeholder="Nombre del producto" required>
-        <?= $validation->showError('nombre_prod', 'custom_error') ?>
+        <?= $validation->showError('nombre_prod') ?>
       </div>
 
       <!-- Categoría -->
@@ -34,7 +34,7 @@
               </option>
           <?php endforeach; ?>
         </select>
-        <?= $validation->showError('categoria', 'custom_error') ?>
+        <?= $validation->showError('categoria') ?>
       </div>
 
       <!-- Precio de costo -->
@@ -42,7 +42,7 @@
         <label for="precio" class="form-label">Precio de costo</label>
         <input type="number" step="0.01" class="form-control" name="precio" id="precio"
                value="<?= set_value('precio'); ?>" required>
-        <?= $validation->showError('precio', 'custom_error') ?>
+        <?= $validation->showError('precio') ?>
       </div>
 
       <!-- Precio de venta -->
@@ -50,7 +50,7 @@
         <label for="precio_vta" class="form-label">Precio de venta</label>
         <input type="number" step="0.01" class="form-control" name="precio_vta" id="precio_vta"
                value="<?= set_value('precio_vta'); ?>" required>
-        <?= $validation->showError('precio_vta', 'custom_error') ?>
+        <?= $validation->showError('precio_vta') ?>
       </div>
 
       <!-- Stock mínimo -->
@@ -58,7 +58,7 @@
         <label for="stock_min" class="form-label">Stock mínimo</label>
         <input type="number" class="form-control" name="stock_min" id="stock_min"
                value="<?= set_value('stock_min'); ?>" required>
-        <?= $validation->showError('stock_min', 'custom_error') ?>
+        <?= $validation->showError('stock_min') ?>
       </div>
 
       <!-- Stock actual -->
@@ -66,14 +66,14 @@
         <label for="stock" class="form-label">Stock actual</label>
         <input type="number" class="form-control" name="stock" id="stock"
                value="<?= set_value('stock'); ?>" required>
-        <?= $validation->showError('stock', 'custom_error') ?>
+        <?= $validation->showError('stock') ?>
       </div>
 
       <!-- Imagen -->
       <div class="mb-3">
         <label for="imagen" class="form-label">Imagen del producto</label>
         <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*" required>
-        <?= $validation->showError('imagen', 'custom_error') ?>
+        <?= $validation->showError('imagen') ?>
       </div>
 
       <!-- Botones -->

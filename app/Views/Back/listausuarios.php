@@ -1,4 +1,4 @@
-<!-- Inicio del cuerpo -->
+
 <main class="container my-5">
 
   <div class="row justify-content-center">
@@ -12,13 +12,12 @@
           <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
         <?php endif; ?>
 
-        <!-- Botones superiores responsivos -->
+        <!-- Botones  -->
         <div class="d-flex flex-column flex-md-row justify-content-md-end align-items-md-center gap-2 mb-3">
           <a href="<?= base_url('nuevo_usuario') ?>" class="btn btn-success">Agregar Usuario</a>
           <a href="<?= base_url('usuarios_baja') ?>" class="btn btn-secondary">Ver dados de baja</a>
         </div>
 
-        <!-- Tabla con scroll horizontal en pantallas chicas -->
         <div class="table-responsive">
           <table class="table table-striped table-bordered text-center">
             <thead class="table-dark">
@@ -62,7 +61,6 @@
           </table>
         </div>
 
-        <!-- Espacio forzado si hay pocos usuarios -->
         <?php if (empty($usuarios) || count($usuarios) < 4): ?>
           <div style="height: 23vh;"></div>
         <?php endif; ?>

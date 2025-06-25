@@ -8,10 +8,10 @@ class Login_controller extends BaseController
 {
     public function index()
     {
-        // Carga los helpers necesarios para formularios y URLs
+        
         helper(['form', 'url']);
 
-        return view('Back/login'); // Carga la vista del formulario login.php
+        return view('Back/login'); // Carga la vista del formulario login
     }
 
     
@@ -54,7 +54,7 @@ class Login_controller extends BaseController
                 $session->set($ses_data);
 
                 $session->setFlashdata('msg', '¡Bienvenido!' .$ses_data['nombre']. '!');
-                return redirect()->to('/'); // Página protegida
+                return redirect()->to('/'); 
             } else {
                 $session->setFlashdata('msg', 'Contraseña incorrecta');
                 return redirect()->to('/login');

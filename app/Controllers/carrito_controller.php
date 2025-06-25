@@ -15,7 +15,6 @@ class carrito_controller extends BaseController
 {
     helper(['form', 'url']);
 
-    // Carga el carrito usando el servicio compartido de CodeIgniter
     $this->cart = \Config\Services::cart(); 
 
     $this->session = session();
@@ -58,14 +57,11 @@ class carrito_controller extends BaseController
         'qty'     => 1,
         'price'   => $producto['precio_vta'],
         'name'    => $producto['nombre_prod'],
-        'imagen'  => $producto['imagen'] ?? 'default.png', // opcional
+        'imagen'  => $producto['imagen'] ?? 'default.png', 
     ];
 
     // Insertar en el carrito
     $this->cart->insert($item);
-
-    // Mostrar contenido del carrito para prueba (luego quitar)
-    // dd($this->cart->contents());
 
     return redirect()->to(base_url('carrito'))->with('mensaje', 'Producto agregado al carrito');
 }
@@ -85,7 +81,7 @@ class carrito_controller extends BaseController
         return redirect()->back();
     }
 
-   public function comprar()
+  public function comprar()
 {
     $cartItems = $this->cart->contents();
 
@@ -95,30 +91,40 @@ class carrito_controller extends BaseController
 
     $cabeceraModel = new Ventas_cabecera_model();
     $detalleModel  = new Ventas_detalle_model();
+    $productoModel = new producto_model();
 
     $id_usuario = $this->session->get('id_usuario');
     $total      = $this->cart->total();
 
-    
+    // Insertar cabecera de venta
     $venta_id = $cabeceraModel->insertarCabecera($id_usuario, $total);
 
-    
     foreach ($cartItems as $item) {
         if (!isset($item['id'])) {
             continue;
         }
 
+        // Guardar detalle de venta
         $detalleModel->insert([
             'venta_id'    => $venta_id,
             'producto_id' => $item['id'],
             'cantidad'    => $item['qty'],
             'precio'      => $item['price'],
         ]);
+
+        // Descontar stock 
+        $producto = $productoModel->find($item['id']);
+
+        if ($producto && $producto['stock'] >= $item['qty']) {
+            $nuevoStock = $producto['stock'] - $item['qty'];
+            $productoModel->update($item['id'], ['stock' => $nuevoStock]);
+        }
     }
 
     $this->cart->destroy();
     return redirect()->to(base_url('mis_compras'))->with('mensaje', 'Compra realizada con éxito');
 }
+
 
 
 

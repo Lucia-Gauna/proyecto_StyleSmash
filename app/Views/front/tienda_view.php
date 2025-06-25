@@ -15,15 +15,22 @@
             </div>
 
             <div class="card-footer bg-transparent border-0">
+            <?php if ($p['stock'] > 0): ?>
               <form action="<?= base_url('carrito/agregar/' . $p['id']) ?>" method="post">
                 <?= csrf_field() ?>
                 <button type="submit" class="btn btn-outline-dark btn-sm w-100">Agregar al carrito</button>
               </form>
-            </div>
+            <?php else: ?>
+              <button class="btn btn-danger btn-sm w-100" disabled>Sin stock</button>
+            <?php endif; ?>
+          </div>
+
+
           </div>
         </div>
       <?php endforeach; ?>
     </div>
   <?php endforeach; ?>
 </main>
+
 
